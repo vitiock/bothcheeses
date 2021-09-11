@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://bothcheeses.com/archives/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/archives/devlog/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/posts/first-post/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/posts/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/tags/procedural-generation/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/tags/rendering/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/tags/</loc>
+    <lastmod>2021-09-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://bothcheeses.com/archives/2021/09/</loc>
+  </url><url>
+    <loc>https://bothcheeses.com/categories/</loc>
+  </url>
+</urlset>

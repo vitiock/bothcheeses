@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2021/09 on Both Cheeses</title>
+    <link>https://bothcheeses.com/archives/2021/09/</link>
+    <description>Recent content in 2021/09 on Both Cheeses</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://bothcheeses.com/archives/2021/09/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Post</title>
+      <link>https://bothcheeses.com/posts/first-post/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bothcheeses.com/posts/first-post/</guid>
+      <description>This is the first post of what will be a dev log to document my process of making a game. I&amp;rsquo;m mainly using this as a mechanism to hold myself accountable and insure that I am making progress towards goals. This is likely to look an awful lot like a sprint retrospective in the start as I learn what makes a good post and what doesn&amp;rsquo;t.
+I will also likely use this space at times to talk about general computer science related topics and the experiences I&amp;rsquo;ve had as a developer.</description>
+    </item>
+    
+  </channel>
+</rss>

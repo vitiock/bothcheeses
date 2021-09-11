@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archives on Both Cheeses</title>
+    <link>https://bothcheeses.com/archives/</link>
+    <description>Recent content in Archives on Both Cheeses</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://bothcheeses.com/archives/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devlog</title>
+      <link>https://bothcheeses.com/archives/devlog/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://bothcheeses.com/archives/devlog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2021/09</title>
+      <link>https://bothcheeses.com/archives/2021/09/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://bothcheeses.com/archives/2021/09/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
