@@ -13,12 +13,12 @@
   gtag('config', 'G-6LFJQY8DK0');
 </script>
 
-<title>Both Cheeses | Archives</title>
+<title>Both Cheeses | 2D Tiling</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <meta name="description" content="Both Cheeses">
     
-    <meta name="description" content="">
+    <meta name="description" content="How tiles currently work">
     
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -27,7 +27,7 @@
     <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Both Cheeses | Archives" />
+    <meta property="og:title" content="Both Cheeses | 2D Tiling" />
     
     
         
@@ -38,20 +38,19 @@
     
 
 
-	
 
-<meta name="description" content="">
+<meta name="description" content="How tiles currently work">
 <meta property="og:site_name" content="Both Cheeses">
-<meta property="og:description" content="">
-<meta property="og:url" content="https://bothcheeses.com/archives/">
+<meta property="og:description" content="How tiles currently work">
+<meta property="og:url" content="https://bothcheeses.com/posts/002-devlog/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="">
 
-<link rel="canonical" href="https://bothcheeses.com/archives/">
+<link rel="canonical" href="https://bothcheeses.com/posts/002-devlog/">
 
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="How tiles currently work">
 <meta property="article:published_time" content="2021-09-17T11:02:29-07:00">
 <meta property="article:updated_time" content="2021-09-17T11:02:29-07:00">
 
@@ -59,8 +58,10 @@
 
 
 
-<meta property="og:image" content="https://bothcheeses.com">
-<meta property="og:image:url" content="https://bothcheeses.com">
+    
+<meta property="og:image" content="https://bothcheeses.com/posts/002-devlog/hero.png">
+<meta property="og:image:url" content="https://bothcheeses.com/posts/002-devlog/hero.png">
+    
 
     
     <link rel="stylesheet" href="/css/custom.css">
@@ -121,65 +122,69 @@
 <div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
             <div class="lg:mx-5">
 <div class="grid grid-cols-3 gap-4">
-  
-  <div class="col-span-3 lg:col-span-2 mb-3">
-  
-    <h2 class="text-4xl dark:text-white">Archives</h2>
     
+    <div class="bg-white col-span-3 lg:col-span-2 p-5 dark:bg-warmgray-900 dark:text-white">
     
-    
-    
-    
-    <a href="/archives/devlog/">
-      <div class="bg-white w-full p-3 lg:max-w-full lg:flex mt-5 transform hover:-translate-y-1 hover:shadow-md duration-500 dark:bg-warmgray-900">
-    
-    
-    
-    <img alt="thumbnail" id="thumb" class="lg:w-auto lg:h-44" src="/img/default.jpg">
-    
-    
-    
-    <div class="relative pl-4 p-2 justify-between leading-normal max-w-full w-full">
-            <div class="text-gray-900 font-bold text-xl mb-2 dark:text-white">Devlog</div>
-            <p class="text-gray-700 text-base pb-5 dark:text-gray-300">...</p>
-            <p class="text-sm text-gray-600 absolute items-center right-0 bottom-0 dark:text-gray-400">
-                <time><span class="icon-access_time mr-1"></span>2021/09/17</time>
-            </p>
-    </div>
+        <h1 class="title text-4xl">2D Tiling</h1>
+        <div class="content py-1"><p><img src="/posts/002-devlog/hero.png" alt="Hero image">
+This week I worked on making it so that given a set of terrain, the tiles would line up and have smooth transitions between them, instead of just being squares with hard edges. This was a lot of work because I wasn&rsquo;t ready for how many different tile variations there were between just two types of terrain. To understand how to render an individual piece of terrain we need to look at all 8 surrounding neighbors. We then match this against a map, with just 2 types, there are 255 different combinations of tiles that we could have, as we have 8 neighbors that . If we had tiles that interacted with 3 terrains, then we could need 3^8 tile permutations, or 6561 (a problem I&rsquo;ll have to solve for at a later time, though shouldn&rsquo;t hinder making progress at this time).</p>
+<p>For the examples I will be showing a 5x5 matrix of terrain colors along with the resulting 3x3 rendering of the tile.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Terrain</th>
+<th style="text-align:center">Tiles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="/posts/002-devlog/plus_grid.png" alt="Island 1"></td>
+<td style="text-align:center"><img src="/posts/002-devlog/grass_water_plus.png" alt="Island 2"></td>
+</tr>
+</tbody>
+</table>
+<p>As can be seen in the image above that just looking at cardinal directions isn&rsquo;t enough because we need to be able to divot in the corners of the center piece based on the corner adjacent tiles. To figure out what tile to use, I&rsquo;ve set a map that matches the 9 tile hash to a tile id. The code that creates the 9 tile hash currently assumes there are 3 terrains, and that water is the default. We then assign values to each quadrant in 9 tile section based on the terrain it&rsquo;s in.</p>
+<p><img src="/posts/002-devlog/plus_grid_with_index.png" alt="Island 1"></p>
+<p>By adding up the red numbers in the grid we get a unique identifier that represents what area in the 3x3 grid is covered in land and which is covered in water, which can ultimately be mapped back to a single tile.</p>
+<p>It is likely that this system of mapping terrain to tiles won&rsquo;t be the final form of the game simply due to not being able to scale to the multiple different terrain types I want to have present on a single map (water, sand, grass, gravel, dirt) which would be a mapping of 1953125 potential tiles even if we assume through rotation and duplication we only need ~25% of those, that&rsquo;s 488281 tiles, or approximately a texture with 700 tiles by 700 tiles. However being able to support several terrains now with only minor graphical issues when there are 3 terrains in an area should be enough to estimate if the prototype of the game I&rsquo;m making is fun.</p>
+<h1 id="what-was-built-this-week">What was built this week</h1>
+<ul>
+<li>A mapping to determine the correct tile to use given a set of 9 terrains.</li>
+<li>The screenshot and window rendering were unified to a single code path.</li>
+<li>Unit tests are now run before each commit using git hooks, as well as when a pull request is submitted.</li>
+<li>Many new tiles were created for transitions between grass and water.</li>
+<li>Controller input now works to navigate the map in the executable.</li>
+<li>Vertices for a tile location are now stable as we move the camera instead of the map.</li>
+</ul>
+<h1 id="what-went-well">What went well</h1>
+<ul>
+<li>Got visual progress and event got some extra done with controller input</li>
+<li>Rendering tests made it easy to detect and diagnose when I was only using 15 of 16 pixels of each tile</li>
+</ul>
+<h1 id="what-could-be-improved">What could be improved</h1>
+<ul>
+<li>Didn&rsquo;t get lightbox implemented in the website</li>
+<li>Still not confident writing blog entries I&rsquo;m sure it will get easier with time and I&rsquo;ll feel more confident in it.</li>
+<li>Morning motivation/discipline is lacking though I feel motivated at night</li>
+</ul>
+<h1 id="goals-for-next-week">Goals for next week</h1>
+<p>I&rsquo;ll be spending a bunch of time next week with family so won&rsquo;t likely accomplish a lot so have reduced goals and expectation</p>
+<ul>
+<li>Performance improvements
+<ul>
+<li>Caching of chunk vertices</li>
+<li>Having last updated tick in chunks to determine if recalculation is needed</li>
+</ul>
+</li>
+<li>Resize rendering on window size change</li>
+<li>Scrolling map based on keyboard input instead of just gamepad</li>
+<li>Flesh out a more public roadmap of features</li>
+</ul>
 </div>
-
-    </a>
-    
-    <a href="/archives/2021/09/">
-      <div class="bg-white w-full p-3 lg:max-w-full lg:flex mt-5 transform hover:-translate-y-1 hover:shadow-md duration-500 dark:bg-warmgray-900">
-    
-    
-    
-    <img alt="thumbnail" id="thumb" class="lg:w-auto lg:h-44" src="/img/default.jpg">
-    
-    
-    
-    <div class="relative pl-4 p-2 justify-between leading-normal max-w-full w-full">
-            <div class="text-gray-900 font-bold text-xl mb-2 dark:text-white">2021/09</div>
-            <p class="text-gray-700 text-base pb-5 dark:text-gray-300">...</p>
-            <p class="text-sm text-gray-600 absolute items-center right-0 bottom-0 dark:text-gray-400">
-                <time><span class="icon-access_time mr-1"></span>0001/01/01</time>
-            </p>
     </div>
-</div>
-
-    </a>
     
-    
-
-
-  </div>
-  
     <div class="hidden lg:block lg:col-span-1">
-    
-    
-            
-            <div class="mb-3">
+        <div class="mb-3">
     <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
         <label>
             <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
@@ -189,9 +194,7 @@
         <input type="hidden" name="sitesearch" value="https://bothcheeses.com" />
     </form>
 </div>
-        
-            
-            <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+        <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
     <p class="text-xl text-center text-gray-700 py-3 px-3 dark:text-gray-300">Archives</p>
     
     
@@ -204,11 +207,7 @@
     
 </div>
         
-            
-            
         
-            
-            
 <div class="bg-white panel mb-3 dark:bg-warmgray-900">
     <p class="text-xl text-center text-gray-700 py-3 pl-3 dark:text-gray-300">Tags</p>
     <div class="panel-block p-2">
@@ -231,8 +230,6 @@
 </div>
 
         
-            
-            
 
 <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
     <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300">Recent Posts</p>
@@ -259,10 +256,8 @@
         </a>
     </div>
 </div>
-        
+    </div>
     
-</div>
-  
 </div>
 
             </div>
