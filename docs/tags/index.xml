@@ -6,22 +6,40 @@
     <description>Recent content in Tags on Both Cheeses</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Sep 2021 11:02:29 -0700</lastBuildDate><atom:link href="https://bothcheeses.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Sep 2021 09:09:32 -0700</lastBuildDate><atom:link href="https://bothcheeses.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Procedural Generation</title>
-      <link>https://bothcheeses.com/tags/procedural-generation/</link>
-      <pubDate>Fri, 17 Sep 2021 11:02:29 -0700</pubDate>
+      <title>Chunks</title>
+      <link>https://bothcheeses.com/tags/chunks/</link>
+      <pubDate>Fri, 24 Sep 2021 09:09:32 -0700</pubDate>
       
-      <guid>https://bothcheeses.com/tags/procedural-generation/</guid>
+      <guid>https://bothcheeses.com/tags/chunks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code improvements</title>
+      <link>https://bothcheeses.com/tags/code-improvements/</link>
+      <pubDate>Fri, 24 Sep 2021 09:09:32 -0700</pubDate>
+      
+      <guid>https://bothcheeses.com/tags/code-improvements/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rendering</title>
       <link>https://bothcheeses.com/tags/rendering/</link>
-      <pubDate>Fri, 17 Sep 2021 11:02:29 -0700</pubDate>
+      <pubDate>Fri, 24 Sep 2021 09:09:32 -0700</pubDate>
       
       <guid>https://bothcheeses.com/tags/rendering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Procedural Generation</title>
+      <link>https://bothcheeses.com/tags/procedural-generation/</link>
+      <pubDate>Fri, 17 Sep 2021 11:02:29 -0700</pubDate>
+      
+      <guid>https://bothcheeses.com/tags/procedural-generation/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chunks on Both Cheeses</title>
+    <link>https://bothcheeses.com/tags/chunks/</link>
+    <description>Recent content in Chunks on Both Cheeses</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 24 Sep 2021 09:09:32 -0700</lastBuildDate><atom:link href="https://bothcheeses.com/tags/chunks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chunk Caching</title>
+      <link>https://bothcheeses.com/posts/003-devlog/</link>
+      <pubDate>Fri, 24 Sep 2021 09:09:32 -0700</pubDate>
+      
+      <guid>https://bothcheeses.com/posts/003-devlog/</guid>
+      <description>This weeks update is going to be pretty short as I didn&amp;rsquo;t do much on the project. I worked to update the chunk rendering system to render chunks instead of individual tiles. I also started caching the vertices of chunks so that if a chunk has previously been displayed, the vertices don&amp;rsquo;t need to be recalculated every frame. I also made it so that updates to window size are reflected, however this still needs to be moved to a translation matrix instead of recalculating vertices based on window size.</description>
+    </item>
+    
+  </channel>
+</rss>
